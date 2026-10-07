@@ -1,0 +1,152 @@
+---
+import '../styles/global.css';
+
+const title = 'Nicolas De La Pava — security researcher';
+const description =
+  'Security researcher with a full-stack and DevOps background. I find vulnerabilities in web apps and APIs and write reports a developer can act on.';
+
+const work = [
+  {
+    name: 'Molara',
+    desc: 'Dental-practice platform: odontograms, scheduling, reminders, payments. FastAPI + Next.js on AWS.',
+    meta: '2022 → 2024 · Full-stack · Freelance',
+    href: '#contact',
+  },
+  {
+    name: 'ÁREA 4 Market',
+    desc: 'Platform modules for a logistics network across the Latin American supply chain. Next.js, Prisma, PostgreSQL.',
+    meta: '2025 → 2026 · Full Stack Engineer · Internship',
+    href: '#contact',
+  },
+  {
+    name: 'Visbl',
+    desc: 'US mortgage marketplace connecting borrowers with licensed loan officers. PHP, Laravel, remote team.',
+    meta: '2025 → now · Software Engineer',
+    href: '#contact',
+  },
+];
+
+const ghost = `        *=
+        *--=+
+        *==--=+
+         ====--++%* #   ***+*
+  *      +=======+====+++++*
+ +=====  +=+==---------===+++**+++++++====*
+ *+===-=+*+=------------========--------=+
+   +========-=----------====+=========+*
+    +++====+===-------======++=====++*
+     +=+===+::+=========+++++===++*
+    *=++++++-:=+++++==++==-++===+#
+    +-=++.:+++==+==++==-::=+=+==++=======*
+    +==++-.--=+++++++====+++++++=+====+++
+    *==++*+:.:-:--=+=+++==++++++++++*
+   ##++*****==:....:...--++++++#
+   +********##**+=+=-=+*******#
+   +=+********########*****###
+    *++**************+++++++#
+      #**#**********++++++++*
+              #***#*++++++==*
+                *#   +****++
+                      ****`;
+
+const headline = [
+  ['I build', 1.9],
+  ['the stack.', 2.0],
+];
+const headline2 = [
+  ['Then I find', 2.2, false],
+  ['where it', 2.35, true],
+  ['breaks.', 2.5, true],
+];
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://delapava.dev/" />
+    <link rel="canonical" href="https://delapava.dev/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light" />
+  </head>
+  <body>
+    <header class="wrap top">
+      <span style="font-weight: 500">NICOLAS(1)</span>
+      <span class="mid">User Commands</span>
+      <nav aria-label="Sections">
+        <a class="navl" href="#work">work</a>
+        <a class="navl" href="#contact">contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="wrap hero" id="name">
+        <div>
+          <p class="prompt"><span style="color: var(--accent)">~</span>$ <span class="typing">man nicolas</span><span class="cursor" aria-hidden="true"></span></p>
+          <h1>
+            {headline.map(([w, d]) => <span class="rise"><span style={`--d:${d}s`}>{w}</span></span>)}<br />
+            {headline2.map(([w, d, acc]) => <span class="rise"><span class:list={{ acc }} style={`--d:${d}s`}>{w}</span></span>)}
+          </h1>
+          <p class="lead late">{description}</p>
+          <p class="status late"><span class="dot"></span>Cali, Colombia · UTC−5 · open to remote security roles</p>
+        </div>
+        <figure class="ghostwrap">
+          <pre class="ghost" data-ghost aria-label="ASCII portrait of Gengar, the ghost Pokémon">{ghost}</pre>
+          <figcaption>~ ghost in the shell ~</figcaption>
+        </figure>
+      </section>
+
+      <section class="wrap work" id="work">
+        <h2 class="label rv">01 — Work</h2>
+        <div>
+          {work.map((w, i) => (
+            <a class="item rv" href={w.href}>
+              <span class="n">{String(i + 1).padStart(2, '0')}</span>
+              <span class="t">{w.name}</span>
+              <span class="d">{w.desc}<small>{w.meta}</small></span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="wrap contact" id="contact">
+        <h2 class="label rv">02 — See also</h2>
+        <a class="mail rv" href="mailto:nicolas@delapava.dev">nicolas@delapava.dev</a>
+        <ul class="links rv">
+          <li><a class="navl" href="https://github.com/NicolasV7" rel="me">github.com/NicolasV7</a></li>
+          <li><a class="navl" href="https://www.linkedin.com/in/nicolasdlp" rel="me">linkedin.com/in/nicolasdlp</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <span>delapava.dev</span>
+      <span>{new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' })}</span>
+      <span>NICOLAS(1)</span>
+    </footer>
+
+    <script>
+      document.documentElement.classList.remove('no-js');
+      const io = new IntersectionObserver(
+        (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+      const g = document.querySelector<HTMLElement>('[data-ghost]');
+      if (g && matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+        addEventListener('mousemove', (ev) => {
+          const x = (ev.clientX / innerWidth - 0.5) * 20;
+          const y = (ev.clientY / innerHeight - 0.5) * 14;
+          g.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>
