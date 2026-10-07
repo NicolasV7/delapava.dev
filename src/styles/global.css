@@ -45,7 +45,7 @@ a:hover { color: var(--ink); }
 .typing { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; width: 0; color: var(--ink); animation: type 1.2s steps(11) .4s forwards; }
 .cursor { display: inline-block; width: .55em; height: 1em; background: var(--accent); vertical-align: -.12em; margin-left: 2px; animation: blink 1s steps(1) infinite; }
 h1 { margin: 0; font-weight: 300; font-size: clamp(46px, 7.4vw, 112px); line-height: .96; letter-spacing: -.04em; font-variation-settings: 'opsz' 96; }
-.rise { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; margin-bottom: -.08em; }
+.rise { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; margin: 0 .22em -.08em 0; }
 .rise > span { display: inline-block; transform: translateY(110%); animation: rise 1.2s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: var(--d, 2s); }
 .acc { color: var(--accent); font-weight: 500; }
 .lead { margin: 0; max-width: 46ch; font-size: 20px; line-height: 1.45; color: var(--muted); }
