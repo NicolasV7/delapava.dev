@@ -8,8 +8,8 @@ npm run dev      # http://localhost:4321
 npm run build    # dist/
 ```
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare Workers, static assets)
 
-Pages → Create project → connect this repo → framework preset **Astro** (build `npm run build`, output `dist`). Then Custom domains → `delapava.dev` (DNS is already on Cloudflare). Nothing else to configure; `_headers` is picked up automatically.
+`npm run build && npx wrangler deploy` (needs `npx wrangler login` once). `wrangler.jsonc` serves `dist/` as static assets and binds the custom domain `delapava.dev`; `_headers` is applied by the assets layer.
 
 Content lives in `src/pages/index.astro` (the `work` array and the copy). Styles in `src/styles/global.css`.
