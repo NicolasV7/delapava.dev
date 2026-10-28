@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -20,6 +21,8 @@
     "esbuild": true
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3",
     "wrangler": "^4.148.0"
   }
 }
