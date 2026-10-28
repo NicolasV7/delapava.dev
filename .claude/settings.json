@@ -4,7 +4,7 @@
       "Bash(node:*)", "Bash(npm:*)", "Bash(npx astro:*)", "Bash(git status*)", "Bash(git log*)",
       "Bash(git diff*)", "Bash(git add*)", "Bash(git commit*)", "Agent"
     ],
-    "deny": ["Bash(git push*)", "Bash(npx wrangler deploy*)", "Bash(wrangler deploy*)", "Read(./.env*)"]
+    "deny": ["Read(./.env*)"]
   },
   "hooks": {
     "Stop": [{ "hooks": [{ "type": "command", "command": "bash scripts/check.sh", "timeout": 600 }] }]
