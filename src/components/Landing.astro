@@ -1,0 +1,94 @@
+---
+import '../styles/global.css';
+import { texts } from '../content/landing';
+
+interface Props {
+  language: keyof typeof texts;
+}
+
+const { language } = Astro.props;
+const text = texts[language];
+const canonical = new URL(`/${language}/`, Astro.site);
+---
+
+<!doctype html>
+<html lang={language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{text.title}</title>
+    <meta name="description" content={text.description} />
+    <meta property="og:title" content={text.title} />
+    <meta property="og:description" content={text.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL('/es/', Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <h1><a href={`/${language}/`}>Nicolas De La Pava</a></h1>
+        <nav aria-label={text.sections}>
+          <a href="#work">{text.work}</a>
+          <a href="#contact">{text.contact}</a>
+          <a href={`/${text.switchLanguage}/`} lang={text.switchLanguage} hreflang={text.switchLanguage}>{text.switchLanguage}</a>
+        </nav>
+      </header>
+
+      <main>
+        <p class="tagline"><span class="g">{text.tagline.lead}</span> {text.tagline.subject} <span class="g">{text.tagline.action}</span> {text.tagline.object}</p>
+        <p class="bio">{text.bio}{' '}{text.bioProjectLead}{' '}<a class="link" href="https://valoox.store">valoox</a>{text.bioProjectDescription}{' '}{text.bioLocation}</p>
+
+        <section id="work" aria-labelledby="work-heading">
+          <h2 id="work-heading">{text.workHeading}</h2>
+          <ul class="projects">
+            {text.projects.map((project) => {
+              const ProjectTag = project.href ? 'a' : 'div';
+              return (
+              <li>
+                <ProjectTag class="project-row" href={project.href}>
+                  <span class="project-name">
+                    {project.name}
+                    {project.href && (
+                      <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 7h10v10" />
+                        <path d="M7 17 17 7" />
+                      </svg>
+                    )}
+                  </span>
+                  <div>
+                    <p class="project-description">{project.description}</p>
+                    <p class="project-details">{project.details}</p>
+                  </div>
+                </ProjectTag>
+              </li>
+              );
+            })}
+          </ul>
+        </section>
+      </main>
+
+      <footer id="contact" aria-label={text.contactLabel}>
+        <ul class="contact-links">
+          <li>
+            <span>{text.github}</span><hr aria-hidden="true" />
+            <a class="link" href="https://github.com/NicolasV7" rel="me">@NicolasV7</a>
+          </li>
+          <li>
+            <span>{text.linkedin}</span><hr aria-hidden="true" />
+            <a class="link" href="https://www.linkedin.com/in/nicolasdlp" rel="me">@nicolasdlp</a>
+          </li>
+          <li>
+            <span>{text.email}</span><hr aria-hidden="true" />
+            <a class="link" href="mailto:nicolas@delapava.dev">nicolas@delapava.dev</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>
